@@ -9,6 +9,9 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: { origin: "*" } // Allow CORS for all origins (for testing)
 });
+app.get("/ping", (req, res) => {
+  res.status(200).send("pong");
+});
 
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);
